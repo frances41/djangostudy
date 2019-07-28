@@ -1,0 +1,42 @@
+{% extends 'shared/base.html' %}
+{% block title %}목록{% endblock %}
+{% block style %}
+<!--    <style>-->
+<!--        table {-->
+<!--            text-align: center;-->
+<!--            width: 50%;-->
+<!--            border: 5px solid red;-->
+<!--        }-->
+<!--        tr, td {-->
+<!--            border: 5px solid blue;-->
+<!--        }-->
+<!--        .newbtn {-->
+<!--            color: red;-->
+<!--        }-->
+<!--    </style>-->
+{% endblock %}
+{% block body %}
+    <center>
+        <div style="width: 50%;">
+            <table class="uk-table uk-table-divider uk-table-striped">
+                <thead><td>#<td>제목<td> </td></td></thead>
+                <tbody>
+                    {% for b in board %}
+                    <tr>
+                    <td>
+                        {{forloop.counter}}
+                    <td>
+                        <a href="/app/board/{{b.id}}">{{b.title}}</a>
+                    <td>
+                        <a href="/app/remove/{{b.id}}">삭제</a>
+                    </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </center>
+    <div style="width: 75%; text-align: right;">
+        <a class='newbtn' href="/app/new">게시물 작성</a>
+    </div>
+{% endblock %}
